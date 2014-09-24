@@ -1699,7 +1699,6 @@ var Swiper = function (selector, params) {
 
                     _this.velocity = distance / time;
                     _this.velocity = _this.velocity / 1.5;
-                    console.log(_this.velocity);
                     if (Math.abs(_this.velocity) < 0.02) {
                         _this.velocity = 0;
                     }
@@ -2861,6 +2860,9 @@ Swiper.prototype = {
                 returnHeight = el.offsetHeight - parseFloat(window.getComputedStyle(el, null).getPropertyValue('padding-top')) - parseFloat(window.getComputedStyle(el, null).getPropertyValue('padding-bottom'));
             }
             if (outer) returnHeight += parseFloat(window.getComputedStyle(el, null).getPropertyValue('padding-top')) + parseFloat(window.getComputedStyle(el, null).getPropertyValue('padding-bottom'));
+            if (returnHeight > window.innerHeight) {
+                returnHeight = window.innerHeight;
+            }
             if (round) return Math.round(returnHeight);
             else return returnHeight;
         },
